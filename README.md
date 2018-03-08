@@ -1,5 +1,6 @@
 ![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
+*NOTE:*
+ Have added my implementation below the original examples to be able to understand and implement them better. I have tried to implement the same in typescript or Java, please forgive if I mix the same or include some other language.
 ***
 
 <p align="center">
@@ -121,6 +122,35 @@ echo 'Height: ' . $door->getHeight();
 **When to Use?**
 
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+
+**My implementation**
+```typescript
+interace MachineLearningModel {
+doDataAnalysis(): void;
+predictResults(): void;
+}
+
+class RegressionModel implements MachineLearningModel {
+modelType: string;
+
+    constructor(modelType: ModelType) {
+    this.modelType = ModelType;
+    }
+
+    doDataAnalysis() : void {
+    // put the code here 
+    }
+
+    predictResults(): void {
+    // predict results and put it in some property so the same can be retrivied
+    }
+
+
+}
+
+let regressionModel = new RegressionModel(LinearRegressionModel);
+console.log(regressionModel.modelType);
+```
 
 🏭 Factory Method
 --------------
