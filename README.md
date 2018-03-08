@@ -417,6 +417,111 @@ As you can see the wooden door factory has encapsulated the `carpenter` and the 
 
 When there are interrelated dependencies with not-that-simple creation logic involved
 
+**My Implementation**
+```java
+interface Tab {
+void openPage();
+boolean impersonate();
+}
+
+class ClientTab implements Tab {
+    public openPage() {
+        this.selenium.openPage(this.url);
+    }
+    
+    public boolean impersonate() {
+        // impersonation login
+        return result;
+    }
+}
+
+class SalesTab implements Tab {
+    public openPage() {
+            this.ptor.openPage(this.url);
+        }
+        
+        public boolean impersonate() {
+            // impersonation login
+            return result;
+        }
+}
+
+class TraderTab implements Tab {
+    public openPage() {
+            this.selenium.openPage(this.url);
+        }
+        
+        public boolean impersonate() {
+            // impersonation login
+            return result;
+        }
+}
+
+//Now implement the component owners:
+
+interface ComponentOwner {
+    String name;
+}
+
+class ClientTabOwner implements ComponentOwner {
+    constructor(String name) {
+        this.name = this.name;
+    }
+}
+
+class SalesTabOwner implements ComponentOwner {
+    constructor(String name) {
+        this.name = this.name;
+    }
+}
+
+class TraderTabOwner implements ComponentOwner {
+    constructor(String name) {
+        this.name = this.name;
+    }
+}
+
+
+// Now create the factory to test:
+
+interface AppTestingFactory {
+    public makeTab();
+    void doTesting();
+    public sendReportsToOwner();
+}
+
+class ClientTestingFactory implements AppTestingFactory {
+    
+    constructor() {
+        
+    }
+    
+    makeTab() {
+        Tab clientTab = new ClientTab();
+        return clientTab;
+    }
+    
+    doTesting() {
+        // testing logic
+    }
+    
+    sendReportsToOwner() {
+        TabOwner tabOwner = new ClientTabOwner("Sid");
+        // send mail to owner
+    }
+}
+
+class MainImpl {
+    constructor() {
+        AppTestingFactory ctf = new ClientTestingFactory();
+        Tab clientTab = ctf.makeTab();
+        clientTab.doTesting();
+        clientTab.sendReportsToOwner();
+    }
+}
+```
+
+```
 👷 Builder
 --------------------------------------------
 Real world example
