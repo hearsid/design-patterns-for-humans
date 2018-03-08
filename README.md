@@ -240,6 +240,58 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 
 Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
 
+**My Implementation**
+
+```java
+abstract class MLModel {
+    abstract protected integer giveResults();
+    
+    abstract setModel(){}
+    
+    setModelAndGiveResults() {
+        this.setModel();
+        return this.giveResults();
+    }
+}
+
+class RegressionModel extends MLModel {
+    String modelType;
+    constructor() {
+        
+    }
+    
+    setModel(String modelType) {
+        this.modelType = modelType;
+    }
+}
+
+class ClassificationModel extends MLModel {
+    String modelType;
+    constructor(DataInterface data ) {
+        this.data = this.data;
+    }
+    
+    setModel(String modelType) {
+        this.modelType = modelType;
+    }
+}
+
+class MainImpl {
+    
+    constructor() {
+        DataInterface = this.readTheData();
+        
+        MLModel regModel = new RegressionModel();
+        regModel.setModel('Polynomial');
+        String result = regModel.setModelAndGiveResults();
+        
+        MLModel claModel = new ClassificationModel();
+        regModel.setModel('RandomForest');
+        String claResult = claModel.setModelAndGiveResults();
+    }
+}
+```
+
 🔨 Abstract Factory
 ----------------
 
