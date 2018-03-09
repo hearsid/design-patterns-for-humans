@@ -521,7 +521,6 @@ class MainImpl {
 }
 ```
 
-```
 👷 Builder
 --------------------------------------------
 Real world example
